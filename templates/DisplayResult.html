@@ -1,0 +1,65 @@
+{% extends "BasePage.html" %}
+
+{% block script_block %}
+<SCRIPT>
+function checkNameIsEntered(theForm) {
+	document.getElementById('nameSubmit').disabled = true;
+	var nameEntry = document.getElementById('userName').value.trim();
+	
+	if(nameEntry == "" ) {
+		alert("You have not entered your name!");
+		document.getElementById('nameSubmit').disabled = false;
+		return false;
+	} else {
+		return true;
+	}
+}
+</SCRIPT>
+{% endblock %}
+
+{% block body_block %}
+<DIV ALIGN = "CENTER">
+The source word chosen was<BR>
+<H2>{{ source_word }}</H2>
+{% if legalWords.__len__() == 7: %}
+You completed the game in a total time of {{ game_time }} seconds.
+<BR>
+<BR>
+Congratulations!
+{% endif %}
+<BR>
+{% if illegalWords.__len__() == 0: %}
+None of your words were illegal words.<BR>
+<BR>
+Please enter your name<BR>
+<FORM ONSUBMIT = "return checkNameIsEntered(this);" METHOD = "POST" ACTION = "{{submit_score_url}}">
+<INPUT TYPE = "TEXT" NAME = "userName" ID = "userName" AUTOFOCUS></INPUT><BR>
+<BR>
+Don't forget to submit your name when you are finished!
+<BR><BR>
+<INPUT TYPE = "SUBMIT" ID = "nameSubmit" NAME = "nameSubmit" VALUE = "Submit Your Name">
+</FORM>
+{% else: %}
+The following words were illegal words:<BR>
+<BR>
+<TABLE BORDER = "5" STYLE = "width:50%" BORDERCOLORLIGHT = BLACK BORDERCOLOR = BLACK>
+<TR>
+<TD><B><DIV ALIGN = "CENTER">Illegal Word</DIV></B></TD>
+<TD><B><DIV ALIGN = "CENTER">Reason</DIV></B></TD>
+</TR>
+{% for illegal_entry in illegalWords: %}
+<TR>
+<TD><DIV ALIGN = "CENTER">{{ illegal_entry['Word'] }}</DIV></TD>
+<TD><DIV ALIGN = "CENTER">{{ illegal_entry['Reason'] }}</DIV></TD>
+</TR>
+{% endfor %}
+</TABLE>
+<BR>
+{{ failure_remark }}<BR>
+<BR>
+<A HREF = "{{play_url}}"><BUTTON TYPE = "BUTTON">Play Again</BUTTON></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<A HREF = "{{home_url}}"><BUTTON TYPE = "BUTTON">Quit Game</BUTTON></A>
+{% endif %}
+</DIV>
+
+{% endblock %}

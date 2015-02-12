@@ -1,0 +1,69 @@
+{% extends "BasePage.html" %}
+
+{% block script_block %}
+<SCRIPT>
+function checkEntriesNotEmpty() {
+	var wordCheck1 = document.getElementById('word1').value.trim();
+	var wordCheck2 = document.getElementById('word2').value.trim();
+	var wordCheck3 = document.getElementById('word3').value.trim();
+	var wordCheck4 = document.getElementById('word4').value.trim();
+	var wordCheck5 = document.getElementById('word5').value.trim();
+	var wordCheck6 = document.getElementById('word6').value.trim();
+	var wordCheck7 = document.getElementById('word7').value.trim();
+	
+	if(wordCheck1 == "" || wordCheck2 == "" || wordCheck3 == "" || wordCheck4 == ""
+		|| wordCheck5 == "" || wordCheck6 == "" || wordCheck7 == "") {
+		alert("You have not entered words in all of the textboxes!");
+		return false;
+	} else {
+		return true;
+	}
+}
+</SCRIPT>
+{% endblock %}
+
+{% block body_block %}
+<DIV ALIGN = "CENTER">
+<FORM NAME = "wordEntries" ONSUBMIT = "return checkEntriesNotEmpty()" METHOD = "POST" ACTION = "{{submit_url}}">
+<BR>
+The source word chosen for this game is<BR>
+<H2><I>{{chosen_word}}</I></H2>
+<TABLE CELLSPACING = "0" CELLPADDING = "0" BORDER = "0">
+<TR>
+<TD><DIV ALIGN = "RIGHT">1:&nbsp;&nbsp;</DIV></TD>
+<TD><DIV ALIGN = "LEFT"><INPUT TYPE = "TEXT" NAME = "word1" ID = "word1" AUTOFOCUS></INPUT></DIV></TD>
+</TR>
+<TR>
+<TD><DIV ALIGN = "RIGHT">2:&nbsp;&nbsp;</DIV></TD>
+<TD><DIV ALIGN = "LEFT"><INPUT TYPE = "TEXT" NAME = "word2" ID = "word2"></INPUT></DIV></TD>
+</TR>
+<TR>
+<TD><DIV ALIGN = "RIGHT">3:&nbsp;&nbsp;</DIV></TD>
+<TD><DIV ALIGN = "LEFT"><INPUT TYPE = "TEXT" NAME = "word3" ID = "word3"></INPUT></DIV></TD>
+</TR>
+<TR>
+<TD><DIV ALIGN = "RIGHT">4:&nbsp;&nbsp;</DIV></TD>
+<TD><DIV ALIGN = "LEFT"><INPUT TYPE = "TEXT" NAME = "word4" ID = "word4"></INPUT></DIV></TD>
+</TR>
+<TR>
+<TD><DIV ALIGN = "RIGHT">5:&nbsp;&nbsp;</DIV></TD>
+<TD><DIV ALIGN = "LEFT"><INPUT TYPE = "TEXT" NAME = "word5" ID = "word5"></INPUT></DIV></TD>
+</TR>
+<TR>
+<TD><DIV ALIGN = "RIGHT">6:&nbsp;&nbsp;</DIV></TD>
+<TD><DIV ALIGN = "LEFT"><INPUT TYPE = "TEXT" NAME = "word6" ID = "word6"></INPUT></DIV></TD>
+</TR>
+<TR>
+<TD><DIV ALIGN = "RIGHT">7:&nbsp;&nbsp;</DIV></TD>
+<TD><DIV ALIGN = "LEFT"><INPUT TYPE = "TEXT" NAME = "word7" ID = "word7"></INPUT></DIV></TD>
+</TR>
+</TABLE>
+<BR>
+Don't forget to submit your answers when you are finished!
+<BR><BR>
+<INPUT TYPE = "SUBMIT" VALUE = "Submit Answer">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<A HREF = "{{home_url}}"><BUTTON TYPE = "BUTTON">Cancel Game</BUTTON></A>
+</FORM>
+</DIV>
+
+{% endblock %}

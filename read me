@@ -1,0 +1,35 @@
+log in to mysql as the root user:
+	mysql -u root -p
+
+create the database:
+	create database wordGameDB;
+
+create a user for the database and give them permission to use it:
+	grant all on wordGameDB.* to 'wordgame2dev' identified by 'wordgame2';
+
+log out and log back in as the user that was just created:
+	quit
+	mysql -u wordgame2dev -p wordGameDB
+	enter the password: wordgame2
+
+create the words table:
+	create table allWords
+	(
+	id int not null auto_increment,
+	word varchar(40) not null,
+	primary key(id)
+	);
+
+create the highscores table:
+	create table highscores
+	(
+	time double(8,3) not null,
+	name varchar(40) not null,
+	id int not null auto_increment,
+	primary key(id)
+	);
+
+run the setUpDatabase.py file and the allWords table will now be populated
+
+then run wordgameapp.py to play the game
+	

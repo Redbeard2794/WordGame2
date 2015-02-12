@@ -1,0 +1,30 @@
+{% extends "BasePage.html" %}
+
+{% block body_block %}
+<DIV ALIGN = "CENTER">
+<H3>Previous Game Result</H3>
+{% if last_player == "noNameDefault": %}
+You have not yet played a new game in this current session.<BR>
+{% elif last_player == "lostGameDefault": %}
+The last game on this computer was not successfully completed. Why not try again?<BR>
+{% else: %}
+The last game on this computer was played by <I>{{last_player}}</I> with a time of <I>{{last_score}}</I> seconds.<BR>
+{% endif %}
+<BR>
+<H3>How to Play the Word Game</H3>
+The game will choose and provide you with a random source word.<BR>
+It is your task to enter seven words, with each word being made up from the letters contained in the source word.<BR>
+The words you choose must be a minimum of three letters in length.<BR>
+Each word must be a legal word - it cannot be random gibberish!<BR>
+Duplicate words will not be counted.<BR>
+Also, you cannot use the source word itself as one of your seven words.<BR>
+<BR>
+See how fast you can find your seven words!<BR>
+<BR>
+Simply click the Start button below to get started.<BR>
+<BR>
+<A HREF = "{{play_url}}"><BUTTON TYPE = "BUTTON">Start a New Game</BUTTON></A><BR><BR>
+<A HREF = "{{top_scores_url}}"><BUTTON TYPE = "BUTTON">View the Top 10 Times</BUTTON></A>
+</DIV>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "BasePage.html" %}
+
+{% block body_block %}
+<DIV ALIGN = "CENTER">
+Congratulations {{name_entered}} for completing the game and setting a new high score.<BR>
+{% if ranking_position > 10 %}
+It was a nice try but your time was not good enough to make it into the Top 10.<BR>
+{% elif ranking_position == 1 %}
+You set the fastest time so far! Well done!<BR>
+{% else %}
+Your time made it into the Top 10, nicely done! But you can do better and get 1st place next time, right?<BR>
+{% endif %}
+Your time was ranked in {{ ranking_position }}{{ super_script }} place.<BR>
+Lets take a look at the 10 fastest players so far:<BR>
+<BR>
+<TABLE BORDER = "5" STYLE = "width:50%" BORDERCOLORLIGHT = BLACK BORDERCOLOR = BLACK>
+<TR>
+<TD><B><DIV ALIGN = "CENTER">Position</DIV></B></TD>
+<TD><B><DIV ALIGN = "CENTER">Player Name</DIV></B></TD>
+<TD><B><DIV ALIGN = "CENTER">Time Set</DIV></B></TD>
+</TR>
+{% for indexPosition in range(0, score_list.__len__(), 1) %}
+<TR>
+<TD><DIV ALIGN = "CENTER">{{ indexPosition + 1 }}</DIV></TD>
+<TD><DIV ALIGN = "CENTER">{{ score_list[indexPosition].name }}</DIV></TD>
+<TD><DIV ALIGN = "CENTER">{{ score_list[indexPosition].time }}</DIV></TD>
+</TR>
+{% endfor %}
+</TABLE>
+<BR>
+<A HREF = "{{play_url}}"><BUTTON TYPE = "BUTTON">Play Again</BUTTON></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<A HREF = "{{home_url}}"><BUTTON TYPE = "BUTTON">Quit Game</BUTTON></A>
+
+{% endblock %}

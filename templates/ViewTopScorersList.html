@@ -1,0 +1,25 @@
+{% extends "BasePage.html" %}
+
+{% block body_block %}
+<BR>
+<DIV ALIGN = "CENTER">
+Lets take a look at the 10 fastest players so far:<BR>
+<BR>
+<TABLE BORDER = "5" STYLE = "width:50%" BORDERCOLORLIGHT = BLACK BORDERCOLOR = BLACK>
+<TR>
+<TD><B><DIV ALIGN = "CENTER">Position</DIV></B></TD>
+<TD><B><DIV ALIGN = "CENTER">Player Name</DIV></B></TD>
+<TD><B><DIV ALIGN = "CENTER">Time Set</DIV></B></TD>
+</TR>
+{% for indexPosition in range(0, score_list.__len__(), 1) %}
+<TR>
+<TD><DIV ALIGN = "CENTER">{{ indexPosition + 1 }}</DIV></TD>
+<TD><DIV ALIGN = "CENTER">{{ score_list[indexPosition].name }}</DIV></TD>
+<TD><DIV ALIGN = "CENTER">{{ score_list[indexPosition].time }}</DIV></TD>
+</TR>
+{% endfor %}
+</TABLE>
+<BR>
+<A HREF = "{{home_url}}"><BUTTON TYPE = "BUTTON">Back to Main Menu</BUTTON></A>
+
+{% endblock %}

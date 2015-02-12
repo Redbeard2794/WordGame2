@@ -1,0 +1,38 @@
+body {
+	background-color:	#191970;
+}
+a {
+	text-decoration:  	none;  
+}
+div {
+	color:				#00FA9A;
+	font-size:			16px;
+	font-family:		"Comic Sans MS";
+}
+h1 {
+	text-decoration:	underline;
+	text-shadow: 		9px 5px #000000;
+	color:				#FFFFFF;
+	font-size:			40px;
+}
+h3 {
+	text-decoration:	underline;
+	text-shadow: 		5px 3px #000000;
+	color:				#FFFFFF;
+	font-family:		"Comic Sans MS";
+}
+h2 {
+	color:				#FFFFFF;
+	font-family:		"Comic Sans MS";
+}
+button, input[type=submit] {
+	border: 			3px solid;
+    border-radius: 		20px;
+	border-color:		#00FA9A;
+	height:				30px;
+	background-color:	#000000;
+	color:				#DFDEDD;
+	font-family:		"Comic Sans MS";
+	font-size:			16px;
+	text-decoration:	bold;
+}
