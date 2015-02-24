@@ -165,7 +165,7 @@ def updateHighScoresFile(timeTaken, lastPlayer):
     with MyUtils.UseDatabase(config) as cursor:
         SQL = """insert into highscores (time, name) values (%s, %s)"""
         for e in scoreToInput:
-            cursor.execute(SQL, (e[0], e[1].title()))
+            cursor.execute(SQL, (e[0], e[1].lower()))#title()))
 
 
 # Sort the high scores based on completion time -> returns a sorted list of objects
